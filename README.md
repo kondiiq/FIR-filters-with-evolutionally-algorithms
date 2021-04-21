@@ -1,9 +1,9 @@
 # FIR-filters-with-evolutionally-algorithms
 
 ## Table of contents
-* [PL](#Polska wersja)
+* [PL](#Polska-wersja)
 
-* [ENG](#English version)
+* [ENG](#English-version)
 
 ## PL
 
