@@ -1,12 +1,25 @@
 import random
 
+'''
+Funckja generujca pojedyncza probke
+
+Function which generating single sample
+'''
+
 
 def create_sample():
     sample = random.random()
     return sample
 
 
-def create_starting_population(number_of_sample: int):
+'''
+Funkcja generujaca zadana populacje wykorzystujaca funkcje create_sample
+
+Function which generating population using create_sample()
+'''
+
+
+def create_starting_population(number_of_sample: int = 200):
     samples = []
     for number in range(0, number_of_sample):
         create_sample()
