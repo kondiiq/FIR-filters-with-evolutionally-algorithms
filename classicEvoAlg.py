@@ -1,8 +1,8 @@
 import random
 import pandas
 import matplotlib
-import scipy
-import numpy
+from scipy import signal
+import numpy as np
 
 
 def create_sample():
@@ -10,9 +10,10 @@ def create_sample():
     Funkcja generująca pojedynczą próbkę
 
     Function which generating single sample
+    :param
     ":return float sample
     """
-    sample = random.random()
+    sample = np.random.random_sample()
     return sample
 
 
@@ -33,7 +34,7 @@ def create_starting_population(number_of_sample: int = 200):
         for number in range(0, number_of_sample):
             create_sample()
             samples.append(create_sample())
-    #print(samples)
+    print(samples)
     return samples
 
 
@@ -49,7 +50,7 @@ def choose_best_samples():  # potrzebuje listy !!!
 
 def cross_samples():
     """
-    Funckja wyszukująca najlepsze według algorytmu próbki i dodające je do nowej listy
+    Funkcja wyszukująca najlepsze według algorytmu próbki i dodające je do nowej listy
     Function which find
     :return array of samples
     """
@@ -57,5 +58,5 @@ def cross_samples():
 
 
 if __name__ == "__main__":
-    numbers_of_samples = int(256)
+    numbers_of_samples = int(257)
     population = create_starting_population(numbers_of_samples)
