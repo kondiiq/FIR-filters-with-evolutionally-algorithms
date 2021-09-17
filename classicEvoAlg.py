@@ -1,7 +1,7 @@
 import random
 import pandas
-#import matplotlib
-#import Scipy
+import matplotlib
+import scipy
 import numpy
 
 
