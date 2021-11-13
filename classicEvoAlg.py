@@ -31,3 +31,6 @@ def create_starting_population(number_of_sample: int = 200):
 if __name__ == "__main__":
     numbers_of_samples = int(256)
     population = create_starting_population(numbers_of_samples)
+
+
+
