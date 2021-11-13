@@ -69,3 +69,10 @@ if __name__ == "__main__":
 
     for i in range(0, number_of_solution):
         print(f'Population #number{i} {population[i]}\n')
+
+###     START PSO ALGORITHM
+
+    for iteration in range(0, numbers_of_iterations):
+        for genes in range(0, M):
+            pass
+        pass
