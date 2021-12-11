@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import matplotlib.pyplot as plt
 
 
 def generate_solution(filter_order: int):
@@ -7,6 +8,13 @@ def generate_solution(filter_order: int):
     for gene in range(0, filter_order):
         solution.append(random.uniform(-1, 1))
     return solution
+
+
+def generate_velocities(v_min, v_max, order: int):
+    velocities = []
+    for i in range(0, order):
+        velocities.append(random.uniform(v_min, v_max))
+    return velocities
 
 
 def v_omega_n(order: int, solution):
@@ -28,27 +36,25 @@ def fitness_function(filter_order: int, v_a_omega, band_pass, band_stop):
     return fitness
 
 
-def starting_velocities(u_min, u_max, order: int):
-    velocities = []
-    for iteration in range(0, order):
-        velocities.append(random.uniform(u_min, u_max))
-    return velocities
-
-
 def w_current(w_maximum, w_minimum, current_iteration: int, number_of_iterations: int):
     return w_maximum - (current_iteration - number_of_iterations) * (w_maximum - w_minimum)
 
 
-def u_ik_plus_one(w_k, u_k, alpha1, alpha2, r1, r2, pbest, pcurrent, g_best_current):
-    return w_k * u_k + alpha1 * r1(pbest - pcurrent) + alpha2 * r2 * (g_best_current - pcurrent)
+def u_ik_plus_one(w_k: float, u_k, alpha1, alpha2, r1, r2, p_best, p_current, g_best, size: int, order: int):
+    u_k_plus_one = [[0] * order] * size
+    for i in range(0, size):
+        for j in range(0, order):
+            u_k_plus_one[i][j] = w_k * u_k[i][j] + alpha1 * r1 * (p_best[j] - p_current[i][j]) + alpha2 * r2 * (
+                    g_best[j] - p_current[i][j])
+    return u_k_plus_one
 
 
-def pi_k_plus_one(p_current, u_k_plus_one):
-    return p_current + u_k_plus_one
-
-
-def new_nest(p_curr, alpha, levy, lamdba):
-    return p_curr + alpha * levy(lamdba)
+def pi_k_plus_one(p_current, u_k_plus_one, size, order):
+    p_current_plus_one = [[0] * order] * size
+    for i in range(0, size):
+        for j in range(0, order):
+            p_current_plus_one[i][j] = p_current[i][j] + u_k_plus_one[i][j]
+    return p_current_plus_one
 
 
 def r_generator():
@@ -63,8 +69,8 @@ if __name__ == "__main__":
     alpha = 0.5
     alpha_one = 1.9
     alpha_two = 1.8
-    band_pass = 0.6  # 6554 #7257  # aezakm
-    band_stop = 0.2  #
+    band_pass = 0.6
+    band_stop = 0.2
     u_min = 0.01
     u_max = 1.00
     w_min = 0.4
@@ -81,24 +87,25 @@ if __name__ == "__main__":
         fitness_res = fitness_function(order, solution_omega, band_pass, band_stop)
         population.append(solution)
         fitness.append(fitness_res)
+        velocity_vec.append(generate_velocities(u_min, u_max, order))
         print(f"Fitness {i} is {fitness_res}")
-
-    g_best = population[fitness.index(min(fitness) - 1)]  #GLOBAL
-    p_best = g_best  #LOCAL
-
+    g_best_fit = min(fitness)
+    g_best = population[fitness.index(min(fitness))]
+    p_best = g_best
     for iteration in range(0, cycles):
         local_fitness = 0
         r1 = r_generator()
         r2 = r_generator()
         w_k = w_current(w_max, w_min, iteration, cycles)
-        u_ki = u_ik_plus_one(w_k, velocity_vec, alpha_one, alpha_two, r1, r2, p_best, population, g_best)
-        pi_k_plus_one(population, u_ki)
+        u_ki = u_ik_plus_one(w_k, velocity_vec, alpha_one, alpha_two, r1, r2, p_best, population, g_best, size, order)
+        new_pop = pi_k_plus_one(population, u_ki, size, order)
         for solution in range(0, size):
-            for gene in range(0, order):
-                local_omega = v_omega_n(order, population[solution])
-                fitness = fitness_function(order, local_omega, band_pass, band_stop)
-        ##Update g_best and p_best
-        if min(fitness) < p_best:
-            p_best = min(fitness)
-        if min(fitness) < g_best:
-            g_best = min(fitness)
+            local_omega = v_omega_n(order, new_pop[solution])
+            fitness = fitness_function(order, local_omega, band_pass, band_stop)
+        p_best_fitness = min(fitness)
+        p_best = new_pop.index(p_best_fitness)  # fitness.index(p_best_fitness)
+        if p_best_fitness < g_best_fit:
+            g_best_fit = p_best_fitness
+    t = np.arange(order)
+    plt.plot(t, g_best)
+    plt.show()
