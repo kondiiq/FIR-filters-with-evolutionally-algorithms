@@ -1,0 +1,38 @@
+\babel@toc {nil}{}\relax 
+\contentsline {chapter}{\numberline {1}Wstęp}{4}{}%
+\contentsline {section}{\numberline {1.1}Cel pracy dyplomowej}{4}{}%
+\contentsline {section}{\numberline {1.2}Założenia pracy dyplomowej}{4}{}%
+\contentsline {section}{\numberline {1.3}Wykorzystane narzędzia}{5}{}%
+\contentsline {chapter}{\numberline {2}Algorytm}{7}{}%
+\contentsline {section}{\numberline {2.1}Opis słowny}{8}{}%
+\contentsline {section}{\numberline {2.2}Lista kroków}{8}{}%
+\contentsline {section}{\numberline {2.3}Schemat blokowy}{9}{}%
+\contentsline {section}{\numberline {2.4}Pseudokod}{11}{}%
+\contentsline {chapter}{\numberline {3}Filtr cyfrowy}{12}{}%
+\contentsline {section}{\numberline {3.1}Filtr o skończonej odpowiedzi impulsowej (SOI)}{13}{}%
+\contentsline {chapter}{\numberline {4}Algorytm oparty na strategiach ewolucyjnych lub hybrydowych}{16}{}%
+\contentsline {section}{\numberline {4.1}Algorytm Ewolucyjny}{16}{}%
+\contentsline {subsection}{\numberline {4.1.1}Algorytm PSO}{18}{}%
+\contentsline {subsection}{\numberline {4.1.2}Schemat blokowy oraz parametry kontrolne}{20}{}%
+\contentsline {section}{\numberline {4.2}Algorytm hybrydowy}{20}{}%
+\contentsline {subsection}{\numberline {4.2.1}Algorytm CSPSO}{20}{}%
+\contentsline {subsection}{\numberline {4.2.2}Schemat blokowy oraz parametry kontrolne}{21}{}%
+\contentsline {subsection}{\numberline {4.2.3}Funkcja Gamma ($\Gamma $)}{21}{}%
+\contentsline {subsection}{\numberline {4.2.4}Funckja lotu Levy'ego}{21}{}%
+\contentsline {chapter}{\numberline {5}Implementacja}{23}{}%
+\contentsline {section}{\numberline {5.1}Algorytm PSO}{23}{}%
+\contentsline {subsection}{\numberline {5.1.1}Generowanie pojedynczego rozwiazania}{23}{}%
+\contentsline {subsection}{\numberline {5.1.2}Generowanie prędkości}{23}{}%
+\contentsline {subsection}{\numberline {5.1.3}Obliczenie $ V(\omega _{n})$}{23}{}%
+\contentsline {subsection}{\numberline {5.1.4}Generowanie prędkości początkowych}{24}{}%
+\contentsline {subsection}{\numberline {5.1.5}Obliczenie funkcji dopasowania}{24}{}%
+\contentsline {subsection}{\numberline {5.1.6}Tworzenie nowych rozwiązań z obecnego pokolenia}{24}{}%
+\contentsline {subsection}{\numberline {5.1.7}Skrypt}{25}{}%
+\contentsline {section}{\numberline {5.2}Algorytm CSPSO}{27}{}%
+\contentsline {subsection}{\numberline {5.2.1}Generowanie pojedynczego rozwiazania}{27}{}%
+\contentsline {subsection}{\numberline {5.2.2}Obliczenie $ V(\omega _{n})$}{27}{}%
+\contentsline {subsection}{\numberline {5.2.3}Generowanie prędkości początkowych}{27}{}%
+\contentsline {subsection}{\numberline {5.2.4}Obliczenie funkcji dopasowania}{27}{}%
+\contentsline {subsection}{\numberline {5.2.5}Tworzenie nowych rozwiązań z obecnego pokolenia}{28}{}%
+\contentsline {subsection}{\numberline {5.2.6}Funkcja Lotu Levy'ego}{29}{}%
+\contentsline {chapter}{\numberline {6}Podsumowanie}{31}{}%
